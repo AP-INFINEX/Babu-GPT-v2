@@ -108,7 +108,14 @@ async function getCsbReply(message) {
 }
 
 // === UI Events ===
-sendBtn.addEventListener("click", async () => {
+userInput.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault(); // prevent newline
+    await handleSend();
+  }
+});
+
+async function handleSend() {
   const userMessage = userInput.value.trim();
   if (!userMessage) return;
 
@@ -123,7 +130,7 @@ sendBtn.addEventListener("click", async () => {
   } catch (e) {
     updateLastBotMessage("Something went wrong ra, even Groq gave up...");
   }
-});
+}
 
 // === Message helpers ===
 function appendMessage(sender, text) {
