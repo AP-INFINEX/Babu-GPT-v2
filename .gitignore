@@ -1,0 +1,6 @@
+# Ignore sensitive or unnecessary files
+config.js
+node_modules/
+.DS_Store
+*.log
+*.zip
