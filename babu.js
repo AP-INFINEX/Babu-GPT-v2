@@ -139,11 +139,38 @@ function appendMessage(sender, text) {
   messageDiv.textContent = text;
   chatBox.appendChild(messageDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
+
+  saveToMemory(sender, text); // Save each message
 }
+
+function saveToMemory(sender, text) {
+  const history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
+  history.push({ sender, text });
+  localStorage.setItem("chatHistory", JSON.stringify(history));
+}
+
 
 function updateLastBotMessage(text) {
   const bots = document.querySelectorAll(".bot");
   if (bots.length > 0) {
     bots[bots.length - 1].textContent = text;
   }
+}
+
+function loadMemory() {
+  const history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
+  history.forEach(({ sender, text }) => {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `message ${sender}`;
+    messageDiv.textContent = text;
+    chatBox.appendChild(messageDiv);
+  });
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+window.addEventListener("DOMContentLoaded", loadMemory);
+
+function clearMemory() {
+  localStorage.removeItem("chatHistory");
+  chatBox.innerHTML = '';
 }

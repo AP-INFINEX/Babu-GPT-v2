@@ -6,10 +6,19 @@
   <link rel="stylesheet" href="babu.css" />
   <script src="config.js"></script>
   <script defer src="babu.js"></script>
+  <!-- Firebase SDKs (v10.x is stable and safe) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+<!-- Your config + setup -->
+<script src="firebase.js"></script>
+
 </head>
 <body>
   <div class="header">👨‍🏫 CSB Sir Says...</div>
   <div id="chat-box"></div>
+  <button onclick="clearMemory()">🧹 Clear Chat</button>
   <textarea id="user-input" placeholder="Ask a doubt ra, boy..."></textarea>
 </body>
 </html>

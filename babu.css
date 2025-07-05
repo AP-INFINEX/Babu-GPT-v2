@@ -61,3 +61,33 @@ button {
   color: white;
   cursor: pointer;
 }
+
+#chat-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 70vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #0afe78; /* Light green */
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #0418f3; /* Light grey */
+  align-self: flex-start;
+}
